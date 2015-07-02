@@ -8,9 +8,9 @@ namespace FinalTest.banque.evenements
 {
     public struct BalanceNégativeDétectée : IEvenementMetier
     {
-        private string _numéroDeCompte;
-        private Montant _montant1;
-        private DateTime _dateRetrait;
+        private readonly string _numéroDeCompte;
+        private readonly Montant _montant1;
+        private readonly DateTime _dateRetrait;
 
         public override string ToString()
         {

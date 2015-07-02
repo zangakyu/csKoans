@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FinalTest
+namespace FinalTest.operations
 {
     public class Multiplication : IOperation
     {
@@ -31,10 +27,10 @@ namespace FinalTest
         {
             int a = s.IndexOf("*");
 
-            int firstNumber = Convert.ToInt32(s.Substring(0,a));
-            int secondNumber = Convert.ToInt32(s.Substring(a+1));
+            int firstNumber = Convert.ToInt32(s.Substring(0, a));
+            int secondNumber = Convert.ToInt32(s.Substring(a + 1));
 
-            return firstNumber*secondNumber;
+            return firstNumber * secondNumber;
         }
     }
 }

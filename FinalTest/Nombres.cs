@@ -23,8 +23,8 @@ namespace FinalTest
         {
             get
             {
-       
-                return KeyValuePairs.Where( x => x.Value%2 == 0 ).Select(x => x.Value);
+
+                return KeyValuePairs.Where(x => x.Value % 2 == 0).Select(x => x.Value);
             }
         }
 
@@ -32,7 +32,7 @@ namespace FinalTest
         {
             get
             {
-                return KeyValuePairs.Where(x => x.Value % 2 != 0).OrderBy(x => x.Value).Select(x => x.Key).Aggregate((i,j) => i + ", "+ j);
+                return KeyValuePairs.Where(x => x.Value % 2 != 0).OrderBy(x => x.Value).Select(x => x.Key).Aggregate((i, j) => i + ", " + j);
             }
         }
 
@@ -45,7 +45,7 @@ namespace FinalTest
         {
             get
             {
-                return KeyValuePairs.Where(x => x.Value > 3).OrderBy(x => x.Value).Take(4).Select(x=>x.Value);
+                return KeyValuePairs.Where(x => x.Value > 3).OrderBy(x => x.Value).Take(4).Select(x => x.Value);
             }
         }
 

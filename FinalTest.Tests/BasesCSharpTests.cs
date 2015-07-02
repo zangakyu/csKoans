@@ -1,4 +1,5 @@
 ﻿using System;
+using FinalTest.operations;
 using NFluent;
 using NUnit.Framework;
 
@@ -8,7 +9,7 @@ namespace FinalTest.Tests
     public class BasesCSharpTests
     {
         [Test]
-        public void CeTestDoitPasserSiEnvironnementOK()
+        public void CeTestDoitPasserSiEnvironnementOk()
         {
             Check.That(true).IsTrue();
         }

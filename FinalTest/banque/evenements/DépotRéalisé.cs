@@ -12,7 +12,8 @@ namespace FinalTest.banque.evenements
         public Montant MontantDepot { get; private set; }
         private DateTime _dateDepot;
 
-        public DépotRéalisé(string numéroDeCompte, Montant montantDepot, DateTime dateDepot) : this()
+        public DépotRéalisé(string numéroDeCompte, Montant montantDepot, DateTime dateDepot)
+            : this()
         {
             _numéroDeCompte = numéroDeCompte;
             MontantDepot = montantDepot;

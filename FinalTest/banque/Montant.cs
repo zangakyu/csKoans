@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace FinalTest.banque
 {
- 
+
     public class Montant
-    { 
+    {
         public int Montant1 { get; set; }
 
         public Montant(int montant)
@@ -23,7 +23,7 @@ namespace FinalTest.banque
 
         public override bool Equals(object obj)
         {
-            if (((Montant) obj).Montant1 == Montant1)
+            if (((Montant)obj).Montant1 == Montant1)
             {
                 return true;
             }
@@ -31,7 +31,7 @@ namespace FinalTest.banque
             {
                 return false;
             }
-            
+
         }
     }
 }

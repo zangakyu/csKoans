@@ -8,9 +8,9 @@ namespace FinalTest.banque
 {
     public class CompteBancaire
     {
-        private string _numéroDeCompte;
+        private readonly string _numéroDeCompte;
         private Montant _provision = new Montant(0);
-        private int _autorisationCredit;
+        private readonly int _autorisationCredit;
 
         public CompteBancaire(CompteCréé compteCréé)
         {
@@ -58,7 +58,7 @@ namespace FinalTest.banque
             else
             {
                 int difference = Provision.Montant1 - montantRetrait.Montant1;
-                if (difference*-1 > _autorisationCredit)
+                if (difference * -1 > _autorisationCredit)
                 {
                     throw new RetraitNonAutorisé();
                 }

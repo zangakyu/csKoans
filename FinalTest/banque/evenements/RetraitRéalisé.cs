@@ -8,9 +8,9 @@ namespace FinalTest.banque.evenements
 {
     public struct RetraitRéalisé : IEvenementMetier
     {
-        private string _numéroDeCompte;
+        private readonly string _numéroDeCompte;
         private Montant MontantRetrait { get; set; }
-        private DateTime _dateRetrait;
+        private readonly DateTime _dateRetrait;
 
         public override string ToString()
         {
