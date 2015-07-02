@@ -85,14 +85,14 @@ namespace FinalTest.Tests
         }
 
 
-        //[Test]
-        //public void RécupérerLePremierNombreDontLeTexteContientPlusDe5CaractèresBis()
-        //{
-        //    var nombres = new Nombres(otherKeyValuePairs);
-        //    var premierNombreDontLeTexteContientPlusDe5Caractères = nombres.PremierNombreDontLeTexteContientPlusDe5Caractères;  // meme propriété
+        [Test]
+        public void RécupérerLePremierNombreDontLeTexteContientPlusDe5CaractèresBis()
+        {
+            var nombres = new Nombres(otherKeyValuePairs);
+            var premierNombreDontLeTexteContientPlusDe5Caractères = nombres.PremierNombreDontLeTexteContientPlusDe5Caractères;  // meme propriété
 
-        //    Check.That(premierNombreDontLeTexteContientPlusDe5Caractères).IsEqualTo("dix-sept");
-        //}
+            Check.That(premierNombreDontLeTexteContientPlusDe5Caractères).IsEqualTo("dix-sept");
+        }
 
         //[Test]
         //public void RécupérerLes4NombresSupérieursA3()

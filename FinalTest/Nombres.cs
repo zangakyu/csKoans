@@ -10,7 +10,8 @@ namespace FinalTest
     {
         private IEnumerable<KeyValuePair<string, int>> KeyValuePairs { get; set; }
         private IEnumerable<int> _nombresPairs;
-        public String _texteNombresImpairs;
+        private String _texteNombresImpairs;
+        private String _premierNombreDontLeTexteContientPlusDe5Caractères;
 
         public Nombres(IEnumerable<KeyValuePair<string, int>> keyValuePairs)
         {
@@ -34,6 +35,11 @@ namespace FinalTest
             }
         }
 
- 
+        public String PremierNombreDontLeTexteContientPlusDe5Caractères
+        {
+            get { return KeyValuePairs.Where(x => (x.Key).Length > 5).OrderBy(x => x.Value).Select(x => x.Key).First(); }
+        }
+
+  
     }
 }
