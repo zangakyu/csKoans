@@ -13,17 +13,23 @@ namespace FinalTest
 
         public Calculatrice(IOperation[] operations)
         {
+            Operations = operations;
+            
+        }
 
-            if (operations != null)
+        public int Calculer(string p0)
+        {
+            if (Operations != null)
             {
-                foreach (var operation in operations)
+                foreach (var operation in Operations)
                 {
-                    if (operation.GetType() == typeof(Multiplication)
+                    if (operation.PeutCalculer(p0))
                     {
-                        
+                        return operation.Calculer(p0);
                     }
                 }
             }
+            return -1;
         }
     }
 }
