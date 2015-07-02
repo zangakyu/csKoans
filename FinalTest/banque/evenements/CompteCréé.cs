@@ -3,12 +3,12 @@
     public struct CompteCréé : IEvenementMetier
     {
         public string NuméroDeCompte { get; private set; }
-        private int _autorisationDeCrédit;
+        public int AutorisationDeCrédit { get; private set; }
 
         public CompteCréé(string numéroDeCompte, int autorisationDeCrédit) : this()
         {
             NuméroDeCompte = numéroDeCompte;
-            _autorisationDeCrédit = autorisationDeCrédit;
+            AutorisationDeCrédit = autorisationDeCrédit;
         }
     }
 }

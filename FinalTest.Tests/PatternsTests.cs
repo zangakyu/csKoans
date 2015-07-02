@@ -2,6 +2,7 @@
 using System.Linq;
 using FinalTest.banque;
 using FinalTest.banque.evenements;
+using FinalTest.banque.exceptions;
 using NFluent;
 using NUnit.Framework;
 namespace FinalTest.Tests
@@ -54,17 +55,17 @@ namespace FinalTest.Tests
             Check.That(evenements).ContainsExactly<IEvenementMetier>(new RetraitRéalisé(_numéroDeCompte, montantRetrait, dateRetrait), new BalanceNégativeDétectée(_numéroDeCompte, new Montant(5), dateRetrait));
         }
 
-        //[Test]
-        //[ExpectedException(typeof(RetraitNonAutorisé))]
-        //public void EtantDonnéUnCompteBancaireInitialiséViaEventSourcingFaireUnRetraitEnDehorsDeLAutorisationDeCreditLèveUneException()
-        //{
-        //    var compteBancaire = new CompteBancaire(new CompteCréé(_numéroDeCompte, 10), new DépotRéalisé(_numéroDeCompte, new Montant(5), DateTime.Now));
-        //    var montantRetrait = new Montant(30);
-        //    var dateRetrait = DateTime.Now;
-        //    var evenements = compteBancaire.FaireUnRetrait(montantRetrait, dateRetrait);
+        [Test]
+        [ExpectedException(typeof(RetraitNonAutorisé))]
+        public void EtantDonnéUnCompteBancaireInitialiséViaEventSourcingFaireUnRetraitEnDehorsDeLAutorisationDeCreditLèveUneException()
+        {
+            var compteBancaire = new CompteBancaire(new CompteCréé(_numéroDeCompte, 10), new DépotRéalisé(_numéroDeCompte, new Montant(5), DateTime.Now));
+            var montantRetrait = new Montant(30);
+            var dateRetrait = DateTime.Now;
+            var evenements = compteBancaire.FaireUnRetrait(montantRetrait, dateRetrait);
 
-        //    Check.That(evenements).IsEmpty();
-        //}
+            Check.That(evenements).IsEmpty();
+        }
 
         //[Test]
         //public void EtantDonnéLaSynthèseDuCompteQuandUnEvénementRetraitRéaliséLaSynthèseEstModifiée()
