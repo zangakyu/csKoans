@@ -12,6 +12,7 @@ namespace FinalTest
         private IEnumerable<int> _nombresPairs;
         private String _texteNombresImpairs;
         private String _premierNombreDontLeTexteContientPlusDe5Caractères;
+        public IEnumerable<int> _quatreNombresSupérieursSuivant3;
 
         public Nombres(IEnumerable<KeyValuePair<string, int>> keyValuePairs)
         {
@@ -40,6 +41,14 @@ namespace FinalTest
             get { return KeyValuePairs.Where(x => (x.Key).Length > 5).OrderBy(x => x.Value).Select(x => x.Key).First(); }
         }
 
-  
+        public IEnumerable<int> QuatreNombresSupérieursSuivant3
+        {
+            get
+            {
+                return KeyValuePairs.Where(x => x.Value > 3).OrderBy(x => x.Value).Take(4).Select(x=>x.Value);
+            }
+        }
+
+
     }
 }
