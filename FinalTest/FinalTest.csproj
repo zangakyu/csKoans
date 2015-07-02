@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="banque\CompteBancaire.cs" />
+    <Compile Include="banque\CompteCréé.cs" />
+    <Compile Include="banque\IEvenementMetier.cs" />
     <Compile Include="Nombres.cs" />
     <Compile Include="operations\Calculatrice.cs" />
     <Compile Include="operations\IOperation.cs" />
