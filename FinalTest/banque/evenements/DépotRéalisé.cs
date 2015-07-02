@@ -8,15 +8,15 @@ namespace FinalTest.banque.evenements
 {
     public struct DépotRéalisé : IEvenementMetier
     {
-        public string NuméroDeCompte { get; set; }
-        public Montant MontantDepot { get; set; }
-        public DateTime DateDepot { get; set; }
+        private string _numéroDeCompte;
+        public Montant MontantDepot { get; private set; }
+        private DateTime _dateDepot;
 
         public DépotRéalisé(string numéroDeCompte, Montant montantDepot, DateTime dateDepot) : this()
         {
-            NuméroDeCompte = numéroDeCompte;
+            _numéroDeCompte = numéroDeCompte;
             MontantDepot = montantDepot;
-            DateDepot = dateDepot;
+            _dateDepot = dateDepot;
         }
     }
 }

@@ -40,10 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="banque\CompteBancaire.cs" />
+    <Compile Include="banque\evenements\BalanceNégativeDétectée.cs" />
     <Compile Include="banque\evenements\CompteCréé.cs" />
     <Compile Include="banque\evenements\DépotRéalisé.cs" />
     <Compile Include="banque\evenements\IEvenementMetier.cs" />
-    <Compile Include="banque\evenements\ProvisionInsuffisante.cs" />
     <Compile Include="banque\evenements\RetraitRéalisé.cs" />
     <Compile Include="banque\Montant.cs" />
     <Compile Include="Nombres.cs" />

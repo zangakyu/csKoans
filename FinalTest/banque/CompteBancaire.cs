@@ -7,12 +7,12 @@ namespace FinalTest.banque
 {
     public class CompteBancaire
     {
-        private string NuméroDeCompte;
+        private string _numéroDeCompte;
         private Montant _provision = new Montant(0);
 
         public CompteBancaire(CompteCréé compteCréé)
         {
-            NuméroDeCompte = compteCréé.NuméroDeCompte;
+            _numéroDeCompte = compteCréé.NuméroDeCompte;
         }
 
         public CompteBancaire(params IEvenementMetier[] evenements)
@@ -21,7 +21,7 @@ namespace FinalTest.banque
             {
                 if (evenement is CompteCréé)
                 {
-                    NuméroDeCompte = ((CompteCréé) evenement).NuméroDeCompte;
+                    _numéroDeCompte = ((CompteCréé) evenement).NuméroDeCompte;
                 }
                 else if (evenement is DépotRéalisé)
                 {
@@ -30,7 +30,7 @@ namespace FinalTest.banque
             }
         }
 
-        public Montant Provision
+        private Montant Provision
         {
             get { return _provision; }
             set { _provision = value; }
@@ -43,17 +43,21 @@ namespace FinalTest.banque
 
         public IEnumerable<IEvenementMetier> FaireUnDepot(Montant montantDepot, DateTime dateDepot)
         {
-            yield return new DépotRéalisé(NuméroDeCompte,montantDepot,dateDepot);
+            yield return new DépotRéalisé(_numéroDeCompte,montantDepot,dateDepot);
         }
 
         public IEnumerable<IEvenementMetier> FaireUnRetrait(Montant montantRetrait, DateTime dateRetrait)
-        {
+        {   
             if (montantRetrait.Montant1 <= Provision.Montant1)
             {
-                yield return new RetraitRéalisé(NuméroDeCompte, montantRetrait, dateRetrait);
+                yield return new RetraitRéalisé(_numéroDeCompte, montantRetrait, dateRetrait);
             }
             else
-                yield return new ProvisionInsuffisante(NuméroDeCompte, montantRetrait, dateRetrait);
+            {
+                yield return new RetraitRéalisé(_numéroDeCompte, montantRetrait, dateRetrait);
+                int difference = Provision.Montant1 - montantRetrait.Montant1;
+                yield return new BalanceNégativeDétectée(_numéroDeCompte, new Montant(difference*-1), dateRetrait);
+            }
         }
     }
 }

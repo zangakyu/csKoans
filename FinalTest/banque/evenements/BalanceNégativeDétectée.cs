@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace FinalTest.banque.evenements
 {
-    public struct RetraitRéalisé : IEvenementMetier
+    public struct BalanceNégativeDétectée : IEvenementMetier
     {
         private string _numéroDeCompte;
-        private Montant MontantRetrait { get; set; }
+        private Montant _montant1;
         private DateTime _dateRetrait;
 
         public override string ToString()
         {
-            return string.Format("NuméroDeCompte: {0}, DateRetrait: {1}, MontantRetrait: {2}", _numéroDeCompte, _dateRetrait, MontantRetrait);
+            return string.Format("NuméroDeCompte: {0}, Montant1: {1}, DateRetrait: {2}", _numéroDeCompte, _montant1, _dateRetrait);
         }
 
-        public RetraitRéalisé(string numéroDeCompte, Montant montantRetrait, DateTime dateRetrait) : this()
+        public BalanceNégativeDétectée(string numéroDeCompte, Montant montant, DateTime dateRetrait) : this()
         {
             _numéroDeCompte = numéroDeCompte;
-            MontantRetrait = montantRetrait;
+            _montant1 = montant;
             _dateRetrait = dateRetrait;
         }
     }
