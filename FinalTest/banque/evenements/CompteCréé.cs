@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FinalTest.banque
+﻿namespace FinalTest.banque.evenements
 {
     public struct CompteCréé : IEvenementMetier
     {
-        private string NuméroDeCompte { get; set; }
-        private int AutorisationDeCrédit { get; set; }
+        public string NuméroDeCompte { get; private set; }
+        public int AutorisationDeCrédit { get; private set; }
 
         public CompteCréé(string numéroDeCompte, int autorisationDeCrédit) : this()
         {

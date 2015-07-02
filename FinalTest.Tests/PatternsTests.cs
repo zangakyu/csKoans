@@ -1,8 +1,8 @@
 ﻿using System;
 using FinalTest.banque;
+using FinalTest.banque.evenements;
 using NFluent;
 using NUnit.Framework;
-using FinalTest.banque;
 namespace FinalTest.Tests
 {
     [TestFixture]
@@ -17,40 +17,41 @@ namespace FinalTest.Tests
             var evenements = CompteBancaire.Ouvrir(_numéroDeCompte, autorisationDeCrédit); // retourne un IEnumerable<IEvenementMetier> contenant l'événement CompteCréé
 
             Check.That(evenements).ContainsExactly(new CompteCréé(_numéroDeCompte, autorisationDeCrédit));
+          
         }
 
-        //[Test]
-        //public void EtantDonnéUnCompteBancaireFaireUnDepotProduitUnEvenement()
-        //{
-        //    var compteBancaire = new CompteBancaire(new CompteCréé(_numéroDeCompte, 0)); // Event Sourcing avec un seul événement
-        //    var montantDepot = new Montant(10);
-        //    var dateDepot = DateTime.Now;
-        //    var evenements = compteBancaire.FaireUnDepot(montantDepot, dateDepot); // retourne un IEnumerable<IEvenementMetier> contenant l'événement DepotRealisé
+        [Test]
+        public void EtantDonnéUnCompteBancaireFaireUnDepotProduitUnEvenement()
+        {
+            var compteBancaire = new CompteBancaire(new CompteCréé(_numéroDeCompte, 0)); // Event Sourcing avec un seul événement
+            var montantDepot = new Montant(10);
+            var dateDepot = DateTime.Now;
+            var evenements = compteBancaire.FaireUnDepot(montantDepot, dateDepot); // retourne un IEnumerable<IEvenementMetier> contenant l'événement DepotRealisé
 
-        //    Check.That(evenements).ContainsExactly(new DépotRéalisé(_numéroDeCompte, montantDepot, dateDepot));
-        //}
+            Check.That(evenements).ContainsExactly(new DépotRéalisé(_numéroDeCompte, montantDepot, dateDepot));
+        }
 
-        //[Test]
-        //public void EtantDonnéUnCompteBancaireFaireUnRetraitAvecProvisionSuffisanteProduitUnEvenement()
-        //{
-        //    var compteBancaire = new CompteBancaire(new CompteCréé(_numéroDeCompte, 0), new DépotRéalisé(_numéroDeCompte, new Montant(100), DateTime.Now)); // Event Sourcing avec une liste d'événements (params IEvénementMétier>[])
-        //    var montantRetrait = new Montant(10);
-        //    var dateRetrait = DateTime.Now;
-        //    var evenements = compteBancaire.FaireUnRetrait(montantRetrait, dateRetrait); // retourne un IEnumerable<IEvénémentMétier> contenant l'événement RetraitRealisé
+        [Test]
+        public void EtantDonnéUnCompteBancaireFaireUnRetraitAvecProvisionSuffisanteProduitUnEvenement()
+        {
+            var compteBancaire = new CompteBancaire(new CompteCréé(_numéroDeCompte, 0), new DépotRéalisé(_numéroDeCompte, new Montant(100), DateTime.Now)); // Event Sourcing avec une liste d'événements (params IEvénementMétier>[])
+            var montantRetrait = new Montant(10);
+            var dateRetrait = DateTime.Now;
+            var evenements = compteBancaire.FaireUnRetrait(montantRetrait, dateRetrait); // retourne un IEnumerable<IEvénémentMétier> contenant l'événement RetraitRealisé
 
-        //    Check.That(evenements).ContainsExactly(new RetraitRéalisé(_numéroDeCompte, montantRetrait, dateRetrait));
-        //}
+            Check.That(evenements).ContainsExactly(new RetraitRéalisé(_numéroDeCompte, montantRetrait, dateRetrait));
+        }
 
-        //[Test]
-        //public void EtantDonnéUnCompteBancaireNonApprovisionnéFaireUnRetraitSansDépasserSonAutorisationDeCreditSuffisanteProduitDeuxEvenements()
-        //{
-        //    var compteBancaire = new CompteBancaire(new CompteCréé(_numéroDeCompte, 10), new DépotRéalisé(_numéroDeCompte, new Montant(5), DateTime.Now));
-        //    var montantRetrait = new Montant(10);
-        //    var dateRetrait = DateTime.Now;
-        //    var evenements = compteBancaire.FaireUnRetrait(montantRetrait, dateRetrait); // retourne un IEnumerable<IEvénémentMétier> contenant l'événement RetraitRealisé
+        [Test]
+        public void EtantDonnéUnCompteBancaireNonApprovisionnéFaireUnRetraitSansDépasserSonAutorisationDeCreditSuffisanteProduitDeuxEvenements()
+        {
+            var compteBancaire = new CompteBancaire(new CompteCréé(_numéroDeCompte, 10), new DépotRéalisé(_numéroDeCompte, new Montant(5), DateTime.Now));
+            var montantRetrait = new Montant(10);
+            var dateRetrait = DateTime.Now;
+            var evenements = compteBancaire.FaireUnRetrait(montantRetrait, dateRetrait); // retourne un IEnumerable<IEvénémentMétier> contenant l'événement RetraitRealisé
 
-        //    Check.That(evenements).ContainsExactly<IEvénementMétier>(new RetraitRéalisé(_numéroDeCompte, montantRetrait, dateRetrait), new BalanceNégativeDétectée(_numéroDeCompte, new Montant(5), dateRetrait));
-        //}
+            Check.That(evenements).ContainsExactly<IEvénementMétier>(new RetraitRéalisé(_numéroDeCompte, montantRetrait, dateRetrait), new BalanceNégativeDétectée(_numéroDeCompte, new Montant(5), dateRetrait));
+        }
 
         //[Test]
         //[ExpectedException(typeof(RetraitNonAutorisé))]

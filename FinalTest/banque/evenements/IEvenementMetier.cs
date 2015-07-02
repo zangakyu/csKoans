@@ -1,4 +1,4 @@
-﻿namespace FinalTest.banque
+﻿namespace FinalTest.banque.evenements
 {
     public interface IEvenementMetier
     {
