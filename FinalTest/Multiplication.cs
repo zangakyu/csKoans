@@ -29,8 +29,10 @@ namespace FinalTest
 
         public int Calculer(string s)
         {
-            int firstNumber = Convert.ToInt32(s.Substring(0, s.IndexOf("*", StringComparison.Ordinal)));
-            int secondNumber = Convert.ToInt32(s.Substring(s.IndexOf("*", StringComparison.Ordinal)));
+            int a = s.IndexOf("*");
+
+            int firstNumber = Convert.ToInt32(s.Substring(0,a));
+            int secondNumber = Convert.ToInt32(s.Substring(a+1));
 
             return firstNumber*secondNumber;
         }
